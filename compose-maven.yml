@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile-maven
+    restart: always
+    container_name: jsp-docker-maven
+    develop:
+      watch:
+        - action: sync+restart
+          path: ./src/main/webapp/WEB-INF
+          target: ./workspace/WEB-INF
+        - action: sync+restart
+          path: ./src/main/resources/static
+          target: ./workspace/WEB-INF/classes/static
+        - action: rebuild
+          path: ./target
+    ports:
+      - '8080:8080'

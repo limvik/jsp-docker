@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: jsp-docker
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
